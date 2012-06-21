@@ -1,6 +1,6 @@
 WebcamApp::Application.routes.draw do
   
-  resources :photos, :only => [:index, :show, :new, :create] do
+  resources :photos, :only => [:index, :new, :create] do
     post 'upload', :on => :collection
   end
   

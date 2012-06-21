@@ -2,22 +2,28 @@ class PhotosController < ApplicationController
   def create
     @photo = Photo.new(params[:photo])
     @photo.image = File.new(upload_path)
+    @photo.description = ALL_ANIMALS.sample["filename"]
     @photo.save
 
-    redirect_to @photo
+    redirect_to action: 'new'
   end
 
-  def show
-    @photo = Photo.find(params[:id])
+  def new
+    @questions = ALL_QUESTIONS
+    @animals = ALL_ANIMALS
   end
 
   def index
     @photos = Photo.all
   end
+  
+  def new_photos
+    seen_ids = params[:seen_ids]    
+  end
 
   def upload
     File.open(upload_path, 'w') do |f|
-      f.write request.raw_post
+      f.write request.raw_post.force_encoding("UTF-8")
     end
     render :text => "ok"
   end

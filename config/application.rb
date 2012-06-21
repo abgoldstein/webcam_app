@@ -1,6 +1,9 @@
 require File.expand_path('../boot', __FILE__)
-
 require 'rails/all'
+require 'json'
+
+ALL_QUESTIONS = JSON.parse(File.read(File.expand_path('../questions.json', __FILE__)))
+ALL_ANIMALS = JSON.parse(File.read(File.expand_path('../animals.json', __FILE__)))
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
