@@ -9,4 +9,107 @@ blockquote:before, blockquote:after, q:before, q:after {content:"";}
 blockquote, q {quotes:"" "";}
 a img {border:none;}
 
-body { background-color: #000; }
+body {
+  width: 100%;
+  background-color: #222;
+  color: #eee;
+  font-family: "Helvetica Neue", Helvetica, Arial;
+  font-weight: 500;
+}
+
+h2 { 
+  font-size: 400%;
+  display: block;
+  margin-bottom: 100px;
+}
+
+a.cmd {
+  width: 200px;
+  padding: 6px 20px;
+  text-align: center;
+  text-decoration: none;
+  background-color: #00CA16;
+  color: #7408E3;
+  border: 20px solid #00CA16;
+  -moz-border-radius: 30px;
+  -webkit-border-radius: 30px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 80%;
+  behavior: url(/assets/PIE.htc);
+}
+
+a.cmd:hover {
+  border-color: #7408E3;
+  background-color: #7408E3;
+  color: #00CA16;
+}
+
+a.big {
+  font-size: 200%;
+  width: 600px;
+  padding: 60px 40px;
+}
+
+a.survey_answer {
+  width: 480px 40px;
+}
+
+/*
+  green 00CA16
+  purple 7408E3
+  resolu 1440x900
+*/
+
+/* family portrait */
+
+
+
+/* photobooth */
+
+#container {
+  position: absolute;
+  top: 150px;
+  left: 420px;
+  width: 600px;
+  height: 600px;
+  text-align: center;
+}
+
+#welcome {
+  visibility: visible;
+}
+
+#survey {
+  width: 600px;
+  visibility: hidden;
+  color: #fff;
+  border: 5px solid #7408E3;
+  -moz-border-radius:5px;
+  -webkit-border-radius:5px;
+  border-radius: 5px;
+  behavior: url(/assets/PIE.htc);
+}
+
+#photobooth {
+  visibility: hidden;
+  width: 1px;
+  height: 1px;
+}
+
+#webcam {
+  
+}
+
+#loader {
+  visibility: hidden;
+  z-index: 9999;
+  width: 325px;
+  text-align: left;
+  margin-left: 200px;
+  background: transparent;
+}
+
+#results {
+  visibility: hidden;
+}
