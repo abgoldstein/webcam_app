@@ -1,11 +1,13 @@
 class PhotosController < ApplicationController
   def create
     @photo = Photo.new(params[:photo])
-    @photo.image = File.new(upload_path)
     @photo.description = ALL_ANIMALS.sample["filename"]
+    @photo.image = File.new(upload_path)
     @photo.save
-
-    redirect_to action: 'new'
+    
+    respond_to do |format|
+      format.js { render :layout => false }
+    end
   end
 
   def new
@@ -25,7 +27,6 @@ class PhotosController < ApplicationController
     File.open(upload_path, 'w') do |f|
       f.write request.raw_post.force_encoding("UTF-8")
     end
-    render :text => "ok"
   end
 
   private

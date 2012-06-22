@@ -5,14 +5,13 @@
       allAnimals = <%= @animals.to_json.html_safe %>;
 
       loadQuestionnaire();
+        
+      $('#webcam').html(webcam.get_html(600, 600));
     });
 
     function onload_complete(msg) {
-      // fetch the CSRF meta tag data
       var csrf_param = $('meta[name=csrf-param]').attr('content');
       var csrf_token = $('meta[name=csrf-token]').attr('content');
-
-      // reset the api URL appending the auth token parameter
       webcam.set_api_url('<%= upload_photos_path %>' + '?' + csrf_param + "=" + encodeURI(encodeURI(csrf_token)));
     }
 
@@ -22,11 +21,10 @@
 
     webcam.set_swf_url('/webcam.swf');
     webcam.set_api_url('<%= upload_photos_path %>');
-    webcam.set_quality(100);
+    webcam.set_quality(90);
     webcam.set_shutter_sound(true, '/shutter.mp3');
     webcam.set_hook('onLoad', 'onload_complete');
     webcam.set_hook('onComplete', 'upload_complete');
-    $('#webcam').html(webcam.get_html(600, 600));
   </script>
 <% end %>
 
@@ -39,14 +37,13 @@
   <div id="survey">
     <h3 id="question"></h3>
     <ul id="answers"></ul>
-    <a class="cmd nav" onclick="nextQuestion();">on to the next</a>
   </div>
   
   <div id="photobooth">
     <h3>What do you look like when feeling contemporary art?</h3> 
     <div id="webcam"></div>
-    <%= form_for Photo.new do |f| %>
-      <a class="cmd nav" onclick="webcam.snap(); $(this).parent().submit();">okthanks!</a>
+    <%= form_for Photo.new, :remote => true, :format => 'js', :html => {'data-type' => 'json'} do |f| %>
+      <a class="cmd nav" onclick="take_picture($(this).parent());">like...this!</a>
     <% end %>
   </div>
   
@@ -55,5 +52,9 @@
   </div>
   
   <div id="results">
+    <h3 id="result_title"></h3>
+    <p id="result_description"></p>
+    <p id="result_invitation"></p>
+    <img id="result_image"></img>
   </div>
 </div>

@@ -1,20 +1,28 @@
 var allQuestions;
 var allAnimals;
-
 var currentQuestionnaire;
 var currentIndex;
-var currentAnimal;
+
+$('#new_photo').on('ajax:success', upload_completed);
 
 function navigate_to(view) {
-  $("#container div").css("visibility", "hidden");
+  $("#container").css("visibility", "hidden");
+  $("#container").css("z-index", "-9999");
+  $("#container>div").css("visibility", "hidden");
+  $("#container>div").css("z-index", "-9999");
   
   if (view == "welcome") {
     reset();
   } else if (view == "survey") {
     showQuestion();
+  } else if (view == "webcam") {
+    $('#photobooth').html(webcam.get_html(600, 600));
   }
   
   $("#" + view).css("visibility", "visible");
+  $("#" + view + ">div").css("visibility", "visible");
+  $("#" + view).css("z-index", "9999");
+  $("#" + view + ">div").css("z-index", "9999");
 }
 
 function loadQuestionnaire() {
@@ -38,10 +46,10 @@ function loadQuestionnaire() {
 function nextQuestion() {
   currentIndex++;
   
-  if (currentIndex >= currentQuestionnaire.length)
+  if (currentIndex < currentQuestionnaire.length)
+    showQuestion();
+  else
     navigate_to('photobooth');
-  
-  showQuestion();  
 }
 
 function showQuestion() {  
@@ -56,12 +64,29 @@ function showQuestion() {
   $("#answers").html(answerList);
 }
 
-function setResult(title, description, image) {
+function setResult(animal, url) {
+  var animal;
+  for (var i = 0; animal == null && i < allAnimals.length; i++)
+    if (photo["filename"] == allAnimals[i].filename)
+      animal = allAnimals[i];
   
+  var aOrAn;
+  if (animal.name == "eagle")
+    aOrAn = "an";
+  else
+    aOrAn = "a";
+  
+  $("#result_title").html("You are " + aOrAn + " " + animal.name + "!");
+  $("#result_description").html(animal.description);
+  $("#result_invitation").html(animal.invitation);
+  $("#result_image").attr("src", url);
 }
 
-function upload() {
-  
+function take_picture(form) {
+  webcam.snap(webcam.api_url, function() {
+    form.submit();
+    navigate_to("loader");
+  });
 }
 
 function upload_completed(result) {

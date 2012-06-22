@@ -26,6 +26,7 @@ h3 {
   font-size: 200%;
   margin-bottom: 100px;
   display: inline-block;
+  width: 100%;
 }
 
 a.cmd {
@@ -69,6 +70,7 @@ a.nav {
 ul {
   display: inline-block;
   width: 100%;
+  margin-top: -100px;
   text-align: center;
   display: block;
 }
@@ -99,7 +101,6 @@ li {
   left: 220px;
   width: 800px;
   height: 800px;
-  
   text-align: center;
 }
 
@@ -120,14 +121,16 @@ li {
 
 #photobooth {
   position: absolute;
-  
   visibility: hidden;
   width: 1px;
   height: 1px;
 }
 
 #webcam {
-  visibility: visible;
+  position: absolute;
+  visibility: hidden;
+  top: 0px;
+  left: 250px;
   width: 600px;
   height: 600px;
 }
