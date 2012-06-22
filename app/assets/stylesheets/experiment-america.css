@@ -22,7 +22,6 @@ body {
   color: #eee;
   font-family: GoodDog;
   font-weight: 500;
-  overflow: hidden;
 }
 
 h2 { 
@@ -58,6 +57,12 @@ a.cmd:hover {
   color: #00CA16;
 }
 
+a.cmd:active {
+  border-color: #7408E3;
+  background-color: #7408E3;
+  color: #00CA16;
+}
+
 a.big {
   font-size: 200%;
   width: 600px;
@@ -71,12 +76,13 @@ a.survey_answer {
 
 a.nav {
   text-align: right;
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
 p.caption { font-size: 80% }
 p.unimportant { font-size: 120% }
 p.important { font-size: 200% }
+span.highlight { color: #7408E3 }
 
 ul {
   display: inline-block;
@@ -171,9 +177,16 @@ img {
   margin-left: 200px;
 }
 
+#reset_button {
+  display: block;
+  width: 125px;
+  text-align: center;
+  margin-left: 300px;
+}
+
 @font-face {
   font-family: 'GoodDog';
-  src: url('/assets/gooddog-webfont.eot?#iefix') format('embedded-opentype'),
+  src: url('/assets/gooddog-webfont.eot?#iefix') format('eot'),
        url('/assets/gooddog-webfont.woff') format('woff'),
        url('/assets/gooddog-webfont.ttf') format('truetype'),
        url('/assets/gooddog-webfont.svg#GoodDog') format('svg');

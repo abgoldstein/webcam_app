@@ -76,7 +76,9 @@ function setResult(name, url) {
   
   $("#result_title").html("You are " + aOrAn + " " + animal["name"] + "!");
   $("#result_description").html(animal["description"]);
-  $("#result_invitation").html(animal["invitation"]);
+  $("#result_invitation").html("" +
+    "We thought we’d try an experiment...There’s a meeting of the " + animal["plural"] + " tonight on the elevator at " + 
+    "<span class='highlight'>" + animal['meeting_time'] + "</span>. You should be there." + animal["reminder"]);
   $("#snapshot").attr("src", url);
   $("#result_image").attr("src", "/assets/" + animal["filename"] + ".png");
 }
