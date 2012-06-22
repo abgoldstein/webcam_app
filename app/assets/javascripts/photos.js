@@ -4,6 +4,7 @@ var currentQuestionnaire;
 var currentIndex;
 
 function navigate_to(view) {
+  $("#webcam").css("visibility", "hidden");
   $("#container").css("visibility", "hidden");
   $("#container").css("z-index", "-9999");
   $("#container>div").css("visibility", "hidden");
@@ -11,7 +12,8 @@ function navigate_to(view) {
   
   if (view == "survey") {
     showQuestion();
-  } else if (view == "webcam") {
+  } else if (view == "photobooth") {
+    $("#webcam").css("visibility", "visible");
     //$('#photobooth').html(webcam.get_html(600, 600));
   }
   
@@ -54,30 +56,29 @@ function showQuestion() {
   $("#question").html(question.question);
   
   var answerList = "";
-  for (var i = 0; i < question.answers.length; i++) {
+  for (var i = 0; i < question.answers.length && i < 10; i++) {
     answerList += "<li><a class='cmd survey_answer' onclick='nextQuestion();'>" + question.answers[i] + "</a></li>";
   }
   $("#answers").html(answerList);
 }
 
-function setResult(animal, url) {
-  alert("result");
-  
+function setResult(name, url) {
   var animal;
   for (var i = 0; animal == null && i < allAnimals.length; i++)
-    if (photo["filename"] == allAnimals[i].filename)
+    if (name == allAnimals[i].filename)
       animal = allAnimals[i];
-  
+
   var aOrAn;
-  if (animal.name == "eagle")
+  if (animal["name"] == "eagle")
     aOrAn = "an";
   else
     aOrAn = "a";
   
-  $("#result_title").html("You are " + aOrAn + " " + animal.name + "!");
-  $("#result_description").html(animal.description);
-  $("#result_invitation").html(animal.invitation);
-  $("#result_image").attr("src", url);
+  $("#result_title").html("You are " + aOrAn + " " + animal["name"] + "!");
+  $("#result_description").html(animal["description"]);
+  $("#result_invitation").html(animal["invitation"]);
+  $("#snapshot").attr("src", url);
+  $("#result_image").attr("src", "/assets/" + animal["filename"] + ".png");
 }
 
 function upload() {
@@ -93,5 +94,6 @@ function upload() {
 
 function reset() {
   loadQuestionnaire();
+  webcam.reset();
   navigate_to("welcome");
 }

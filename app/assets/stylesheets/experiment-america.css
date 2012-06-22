@@ -155,3 +155,11 @@ li {
 #results {
   visibility: hidden;
 }
+
+#result_description {
+  margin-top: -100px;
+}
+
+#result_image {
+  display: inline-block;
+}

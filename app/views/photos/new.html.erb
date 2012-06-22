@@ -15,10 +15,6 @@
       webcam.set_api_url('<%= upload_photos_path %>' + '?' + csrf_param + "=" + encodeURI(encodeURI(csrf_token)));
     }
 
-    function upload_complete(msg) {
-      webcam.reset();
-    }
-
     webcam.set_swf_url('/webcam.swf');
     webcam.set_api_url('<%= upload_photos_path %>');
     webcam.set_quality(90);
@@ -54,8 +50,9 @@
   <div id="results">
     <h3 id="result_title"></h3>
     <p id="result_description"></p>
-    <p id="result_invitation"></p>
+    <img id="snapshot"></img>
     <img id="result_image"></img>
+    <p id="result_invitation"></p>
     <a class="cmd nav" onclick="reset();">okthanks!</a>
   </div>
 </div>
