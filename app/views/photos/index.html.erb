@@ -8,8 +8,14 @@
 <% end %>
 
 <div id="family_portraits">
+  
+  <% 2.times do %>
+    <% @photos.each do |photo| %>
+      <%= image_tag(photo.image.url(:thumb)) %>
+    <% end %>
+    <%= image_tag('/assets/sea_horse.png') %>
+  <% end %>
 </div>
-
 <div id="container">
   <div id="welcome">
     <h2>TEMPORARY INSTALLATIONS</h2>

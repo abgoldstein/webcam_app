@@ -56,7 +56,7 @@ function showQuestion() {
   $("#question").html(question.question);
   
   var answerList = "";
-  for (var i = 0; i < question.answers.length && i < 10; i++) {
+  for (var i = 0; i < question.answers.length && i < 8; i++) {
     answerList += "<li><a class='cmd survey_answer' onclick='nextQuestion();'>" + question.answers[i] + "</a></li>";
   }
   $("#answers").html(answerList);
@@ -69,7 +69,7 @@ function setResult(name, url) {
       animal = allAnimals[i];
 
   var aOrAn;
-  if (animal["name"] == "eagle")
+  if (animal["name"] == "Eagle")
     aOrAn = "an";
   else
     aOrAn = "a";

@@ -26,8 +26,8 @@
 
 <div id="container">
   <div id="welcome">
-    <h2>WHICH CONTEMPORARY ARTIST ARE YOU?</h2>
-    <a class="cmd big" onclick="navigate_to('survey')">let's find out!</a>
+    <h2>WHAT KIND OF CONTEMPORARY ARTIST ARE YOU?</h2>
+    <a class="cmd big" onclick="navigate_to('survey')">i have no idea!</a>
   </div>
   
   <div id="survey">
@@ -36,11 +36,9 @@
   </div>
   
   <div id="photobooth">
-    <h3>What do you look like when considering contemporary art?</h3> 
+    <h3>make your best contemporary art face</h3> 
     <div id="webcam"></div>
-    <%= form_for Photo.new, :remote => true, :format => 'js', :html => {'data-type' => 'js'} do |f| %>
-      <a class="cmd nav" onclick="upload();">like...this!</a>
-    <% end %>
+    <a class="cmd nav" onclick="upload();">boom.</a>
   </div>
   
   <div id="loader">
@@ -48,11 +46,12 @@
   </div>
   
   <div id="results">
-    <h3 id="result_title"></h3>
-    <p id="result_description"></p>
+    <h2 id="result_title"></h2>
+    <p id="result_description" class="unimportant"></p>
     <img id="snapshot"></img>
     <img id="result_image"></img>
-    <p id="result_invitation"></p>
-    <a class="cmd nav" onclick="reset();">okthanks!</a>
+    <p class="caption">i think i see a resemblance...</p>
+    <p id="result_invitation" class="important"></p>
+    <a class="cmd nav" onclick="reset();">I AM SO THERE</a>
   </div>
 </div>
