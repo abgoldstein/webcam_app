@@ -26,7 +26,11 @@ function navigate_to(view) {
 function loadQuestionnaire() {
   currentQuestionnaire = [];
   while (currentQuestionnaire.length < 4) {
-    question = allQuestions[Math.floor(Math.random() * allQuestions.length)];
+    var random = Math.random();
+    var length = allQuestions.length;
+    var floor = Math.floor(Math.random() * allQuestions.length);
+    var item = allQuestions[0];
+    var question = allQuestions[Math.floor(Math.random() * allQuestions.length)];
     
     // This is wildly inefficient but I don't have time to think about it
     var unique = true;
@@ -51,7 +55,7 @@ function nextQuestion() {
 }
 
 function showQuestion() {  
-  var question = currentQuestionnaire[currentIndex]
+  var question = currentQuestionnaire[currentIndex];
 
   $("#question").html(question.question);
   
