@@ -17,13 +17,7 @@
     }
 
     function upload_complete(msg) {
-      if (msg == 'ok') {
-        $('#new_photo').show();
-        $('#photo_description').focus();
-      } else {
-        alert('An error occured');
-        webcam.reset();
-      }
+      webcam.reset();
     }
 
     webcam.set_swf_url('/webcam.swf');
@@ -43,15 +37,16 @@
   </div>
   
   <div id="survey">
-    <h2 id="question"></h2>
+    <h3 id="question"></h3>
     <ul id="answers"></ul>
+    <a class="cmd nav" onclick="nextQuestion();">on to the next</a>
   </div>
   
   <div id="photobooth">
     <h3>What do you look like when feeling contemporary art?</h3> 
     <div id="webcam"></div>
     <%= form_for Photo.new do |f| %>
-      <a class="cmd" onclick="webcam.snap(); $(this).parent().submit();">okthanks!</a>
+      <a class="cmd nav" onclick="webcam.snap(); $(this).parent().submit();">okthanks!</a>
     <% end %>
   </div>
   

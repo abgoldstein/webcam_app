@@ -15,7 +15,6 @@ function navigate_to(view) {
   }
   
   $("#" + view).css("visibility", "visible");
-  $("#" + view + " div").css("visibility", "visible");
 }
 
 function loadQuestionnaire() {
@@ -41,18 +40,20 @@ function nextQuestion() {
   
   if (currentIndex >= currentQuestionnaire.length)
     navigate_to('photobooth');
+  
+  showQuestion();  
 }
 
-function showQuestion() {
+function showQuestion() {  
   var question = currentQuestionnaire[currentIndex]
 
-  $("#question").innerHTML = question.question;
+  $("#question").html(question.question);
   
   var answerList = "";
   for (var i = 0; i < question.answers.length; i++) {
-    answerList += "<li><a class='cmd survey_question' onclick='nextQuestion'>" + question.answers[i] + "</a></li>";
+    answerList += "<li><a class='cmd survey_answer' onclick='nextQuestion();'>" + question.answers[i] + "</a></li>";
   }
-  $("#answers").innerHTML = answerList;
+  $("#answers").html(answerList);
 }
 
 function setResult(title, description, image) {

@@ -18,9 +18,14 @@ body {
 }
 
 h2 { 
-  font-size: 400%;
-  display: block;
+  font-size: 450%;
   margin-bottom: 100px;
+}
+
+h3 { 
+  font-size: 200%;
+  margin-bottom: 100px;
+  display: inline-block;
 }
 
 a.cmd {
@@ -52,7 +57,28 @@ a.big {
 }
 
 a.survey_answer {
-  width: 480px 40px;
+  width: 800px;
+  padding: 4px 40px;
+}
+
+a.nav {
+  text-align: right;
+  margin-top: 50px;
+}
+
+ul {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  display: block;
+}
+
+li {
+  
+  width: 800px;
+  text-align: center;
+  list-style-type: none;
+  margin-top: 42px;
 }
 
 /*
@@ -70,43 +96,50 @@ a.survey_answer {
 #container {
   position: absolute;
   top: 150px;
-  left: 420px;
-  width: 600px;
-  height: 600px;
+  left: 220px;
+  width: 800px;
+  height: 800px;
+  
   text-align: center;
 }
 
 #welcome {
+  position: absolute;
+  width: 800px;
+  height: 800px;
+  
+  z-index: 9999;
+  
   visibility: visible;
 }
 
 #survey {
-  width: 600px;
+  position: absolute;
   visibility: hidden;
-  color: #fff;
-  border: 5px solid #7408E3;
-  -moz-border-radius:5px;
-  -webkit-border-radius:5px;
-  border-radius: 5px;
-  behavior: url(/assets/PIE.htc);
 }
 
 #photobooth {
+  position: absolute;
+  
   visibility: hidden;
   width: 1px;
   height: 1px;
 }
 
 #webcam {
-  
+  visibility: visible;
+  width: 600px;
+  height: 600px;
 }
 
 #loader {
-  visibility: hidden;
-  z-index: 9999;
+  position: absolute;
+  top: 450px;
+  left: 420px;
   width: 325px;
+  
+  visibility: hidden;
   text-align: left;
-  margin-left: 200px;
   background: transparent;
 }
 
