@@ -4,7 +4,7 @@ class PhotosController < ApplicationController
     @photo.description = ALL_ANIMALS.sample["filename"]
     @photo.image = File.new(upload_path)
     @photo.save
-    
+
     respond_to do |format|
       format.js { render :layout => false }
     end
@@ -19,13 +19,22 @@ class PhotosController < ApplicationController
     @photos = Photo.all
   end
   
-  def new_photos
-    seen_ids = params[:seen_ids]    
+  def unseen
+    seen_ids = params[:seen_ids]
+    @unseen_photos = Photo.all.select {|photo| photo if seen_ids.exclude? photo.id}
+    
+    respond_to do |format|
+      format.js { render :layout => false }
+    end
   end
 
   def upload
     File.open(upload_path, 'w') do |f|
       f.write request.raw_post.force_encoding("UTF-8")
+    end
+    
+    respond_to do |format|
+      format.json { head :ok }
     end
   end
 

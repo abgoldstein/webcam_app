@@ -3,20 +3,16 @@ var allAnimals;
 var currentQuestionnaire;
 var currentIndex;
 
-$('#new_photo').on('ajax:success', upload_completed);
-
 function navigate_to(view) {
   $("#container").css("visibility", "hidden");
   $("#container").css("z-index", "-9999");
   $("#container>div").css("visibility", "hidden");
   $("#container>div").css("z-index", "-9999");
   
-  if (view == "welcome") {
-    reset();
-  } else if (view == "survey") {
+  if (view == "survey") {
     showQuestion();
   } else if (view == "webcam") {
-    $('#photobooth').html(webcam.get_html(600, 600));
+    //$('#photobooth').html(webcam.get_html(600, 600));
   }
   
   $("#" + view).css("visibility", "visible");
@@ -65,6 +61,8 @@ function showQuestion() {
 }
 
 function setResult(animal, url) {
+  alert("result");
+  
   var animal;
   for (var i = 0; animal == null && i < allAnimals.length; i++)
     if (photo["filename"] == allAnimals[i].filename)
@@ -82,22 +80,18 @@ function setResult(animal, url) {
   $("#result_image").attr("src", url);
 }
 
-function take_picture(form) {
+function upload() {
   webcam.snap(webcam.api_url, function() {
-    form.submit();
+    $.ajax({
+      url: "/photos",
+      type: "POST",
+      datatype: "script"
+    });
     navigate_to("loader");
   });
 }
 
-function upload_completed(result) {
-  imaginaryWaittime = Math.floor((Math.random() * 3000) + 1000);
-  
-  setInterval(function() {
-    setResult(title, description, image);
-    navigate_to("result");
-  }, imaginaryWaittime);
-}
-
 function reset() {
-  
+  loadQuestionnaire();
+  navigate_to("welcome");
 }

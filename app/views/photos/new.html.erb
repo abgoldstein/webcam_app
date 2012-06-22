@@ -40,10 +40,10 @@
   </div>
   
   <div id="photobooth">
-    <h3>What do you look like when feeling contemporary art?</h3> 
+    <h3>What do you look like when considering contemporary art?</h3> 
     <div id="webcam"></div>
-    <%= form_for Photo.new, :remote => true, :format => 'js', :html => {'data-type' => 'json'} do |f| %>
-      <a class="cmd nav" onclick="take_picture($(this).parent());">like...this!</a>
+    <%= form_for Photo.new, :remote => true, :format => 'js', :html => {'data-type' => 'js'} do |f| %>
+      <a class="cmd nav" onclick="upload();">like...this!</a>
     <% end %>
   </div>
   
@@ -56,5 +56,6 @@
     <p id="result_description"></p>
     <p id="result_invitation"></p>
     <img id="result_image"></img>
+    <a class="cmd nav" onclick="reset();">okthanks!</a>
   </div>
 </div>
