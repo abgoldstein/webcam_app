@@ -7,7 +7,9 @@
 <% end %>
 
 <div id="family_portrait">
-  <%= image_tag(@photo.image.url(:large), :id => 'portrait') %>
+  <% if @photo %>
+    <%= image_tag(@photo.image.url(:large), :id => 'portrait') %>
+  <% end %>
 </div>
 <div id="container">
   <div id="welcome">
