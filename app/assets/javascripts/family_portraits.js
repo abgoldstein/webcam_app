@@ -1,15 +1,11 @@
-/*var allPortraits;
-
-function retrieveUnseen() {
-  
+function getPortrait() {
+  $.ajax({
+    url: "/photos",
+    type: "GET",
+    datatype: "script"
+  });
 }
 
-function displayPortraits() {
-  
-}*/
-
-/*$.ajax({
-  url: "/photos/unseen",
-  type: "GET",
-  datatype: "script"
-});*/
+function displayPortrait(url) {
+  $("#portrait").attr("src", url);
+}

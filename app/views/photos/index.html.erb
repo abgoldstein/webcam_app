@@ -1,23 +1,16 @@
 <%= content_for :head do %>
   <script type="text/javascript">
     $(document).ready(function() {
-      allPortraits = <%= @portraits.to_json.html_safe %>;
-      showPortraits();
+      setInterval(function() { javascript: location.reload(true) }, 10000);
     });
   </script>
 <% end %>
 
-<div id="family_portraits">
-  
-  <% 2.times do %>
-    <% @photos.each do |photo| %>
-      <%= image_tag(photo.image.url(:thumb)) %>
-    <% end %>
-    <%= image_tag('/assets/sea_horse.png') %>
-  <% end %>
+<div id="family_portrait">
+  <%= image_tag(@photo.image.url(:large), :id => 'portrait') %>
 </div>
 <div id="container">
   <div id="welcome">
-    <h2>TEMPORARY INSTALLATIONS</h2>
+    <h2>TEMPORARY INSTALLATION</h2>
   </div>
 </div>

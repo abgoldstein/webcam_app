@@ -16,12 +16,11 @@ class PhotosController < ApplicationController
   end
 
   def index
-    @photos = Photo.all
+    @photo = Photo.all.sample
   end
   
-  def unseen
-    seen_ids = params[:seen_ids]
-    @unseen_photos = Photo.all.select {|photo| photo if seen_ids.exclude? photo.id}
+  def random
+    @photo = Photo.all.sample
     
     respond_to do |format|
       format.js { render :layout => false }

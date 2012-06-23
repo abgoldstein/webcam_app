@@ -109,9 +109,10 @@ img {
 
 /* family portrait */
 
-#family_portraits {
+#family_portrait {
   position: absolute;
-  margin: 100px;
+  top: 150px;
+  left: 420px;
 }
 
 /* photobooth */

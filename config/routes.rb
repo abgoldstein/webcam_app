@@ -2,7 +2,7 @@ WebcamApp::Application.routes.draw do
   
   resources :photos, :only => [:index, :new, :create] do
     post 'upload', :on => :collection
-    get 'unseen'
+    get 'random'
   end
   
   root :to => redirect("/photos")
